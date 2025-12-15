@@ -16,11 +16,11 @@ var hasCycle = function(head) {
    
    while(head){
 
-    if(hashMap.get(head)) return true;
+    if(hashMap.has(head)) return true;
 
     hashMap.set(head, head.next);
 
-     head = head.next;
+    head = head.next;
    }
     
     
