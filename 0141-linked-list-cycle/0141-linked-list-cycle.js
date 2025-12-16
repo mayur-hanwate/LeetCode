@@ -11,19 +11,19 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-   
-   const hashMap = new Set();
-   
-   while(head){
+    let slow = head;
+    let fast = head;
 
-    if(hashMap.has(head)) return true;
+    if(!head) return false;
 
-    hashMap.add(head, head.next);
+    while(fast && fast.next){
+        slow = slow.next;
+        fast = fast.next.next;
 
-    head = head.next;
-   }
-    
-    
+        if(slow === fast){
+            return true;
+        }
+    }
+
     return false;
-
 };
