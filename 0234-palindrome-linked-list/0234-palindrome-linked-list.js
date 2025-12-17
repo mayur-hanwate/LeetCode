@@ -9,18 +9,49 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var isPalindrome = function(head) {
-    
-    let arr = [];
+var isPalindrome = function (head) {
 
-    while(head){
-        arr.push(head.val);
-        head = head.next;
+    let slow = head;
+    let fast = head;
+
+    let len = 0;
+
+    // Find the middle
+    while (fast) {
+        len++;
+        if (!fast.next || !fast.next.next) {
+            break;
+        };
+        slow = slow.next;
+        fast = fast.next.next;
     }
 
-    for(let i=0;i<arr.length/2;i++){
-        if(arr[i] !== arr[arr.length-i-1]) return false;
+
+    let curr = slow;
+    let prev = null;
+
+    while (curr) {
+        let temp = curr;
+        curr = curr.next;
+
+        temp.next = prev;
+        prev = temp;
+    }
+
+    while(len){
+        if(head.val !== prev.val){
+            return false;
+        }
+        head = head.next;
+        prev = prev.next;
+
+        len--;
     }
 
     return true;
+
 };
+
+// Find the middle of the linked list
+// reverser the other half of the linked list
+// then compare both of the values of those linked list;
