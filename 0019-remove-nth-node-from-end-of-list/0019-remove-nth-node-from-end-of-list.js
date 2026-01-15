@@ -32,8 +32,6 @@ function reverseLinkedList(list) {
         list = temp;
     }
 
-    console.log(list, rev);
-
     return rev;
 
 }
