@@ -12,47 +12,46 @@
  */
 var removeNthFromEnd = function (head, n) {
 
-    let curr = head;
-    let len = findLen(curr);
+let sentinel = new ListNode();
+sentinel.next = head;
 
-    const deletedList = removeElement(curr, len-n+1);
+    let pointer = sentinel;
 
-return deletedList;
-};
+    let pointer2 = sentinel;
+    let moveForward = n;
 
-function findLen(list){
-    let len = 0;
-
-    while(list){
-        list = list.next;
-        len++;
+    while (moveForward) {
+        pointer2 = pointer2.next;
+        moveForward--;
     }
 
-    return len;
-}
+    while (pointer2.next) {
+        pointer = pointer.next;
+        pointer2 = pointer2.next;
+    }
 
-function removeElement(list, pos) {
-    
+
+    pointer.next = pointer.next ? pointer.next.next : null;
+
+
+    return sentinel.next;
+};
+
+
+function deleteNode(list) {
     let sentinel = new ListNode();
     sentinel.next = list;
 
-    let prev = sentinel;    
+    let prev = sentinel;
 
-    while(prev){
-        if(prev.next && pos === 1){
-            prev.next = prev.next.next;
-        }
-        else{
-            prev = prev.next;
-        }
-        pos--;
-    }
+    prev.next = prev.next.next;
 
-    return sentinel.next;
+    console.log(prev);
+
+    return prev;
 }
 
-
-// Reverse the linked list
-// Remove the element which we want.
-// Reverse that linkedlist again
-
+// 2 pointer approach
+// Make the first pointer at the start
+// Make the 2nd pointer nth steps ahead from the start
+// once 2nd pointer reach the end, the first pointer reaches the prev node
