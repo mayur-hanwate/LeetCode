@@ -13,27 +13,22 @@
 var removeNthFromEnd = function (head, n) {
 
     let curr = head;
-    let reverseList = reverseLinkedList(curr);
+    let len = findLen(curr);
 
-    const deletedList = removeElement(reverseList, n);
+    const deletedList = removeElement(curr, len-n+1);
 
-    return reverseLinkedList(deletedList);
-
+return deletedList;
 };
 
-function reverseLinkedList(list) {
+function findLen(list){
+    let len = 0;
 
-    let rev = null;
-
-    while (list) {
-        let temp = list.next;
-        list.next = rev;
-        rev = list;
-        list = temp;
+    while(list){
+        list = list.next;
+        len++;
     }
 
-    return rev;
-
+    return len;
 }
 
 function removeElement(list, pos) {
@@ -41,8 +36,7 @@ function removeElement(list, pos) {
     let sentinel = new ListNode();
     sentinel.next = list;
 
-    let prev = sentinel;
-    
+    let prev = sentinel;    
 
     while(prev){
         if(prev.next && pos === 1){
