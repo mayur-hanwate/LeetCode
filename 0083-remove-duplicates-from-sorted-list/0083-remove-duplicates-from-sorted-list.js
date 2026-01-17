@@ -11,13 +11,9 @@
  */
 var deleteDuplicates = function(head) {
 
-    let sentinel = new ListNode();
-    sentinel.next = head;
-
     let curr = head;
 
     while(curr){
-        console.log(sentinel,"sentinel");
         if(curr.next && curr.val === curr.next.val){
             curr.next = curr.next.next;
         }
@@ -26,8 +22,6 @@ var deleteDuplicates = function(head) {
         }
     }
 
-    console.log(sentinel, curr, head);
-
-    return sentinel.next;
+    return head;
     
 };
