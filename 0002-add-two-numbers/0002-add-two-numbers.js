@@ -50,8 +50,6 @@ var addTwoNumbers = function (l1, l2) {
 
 function numberToLinkedList(numStr) {
 
-    console.log(numStr.split(''));
-
     const arr = numStr.split('');
     let sentinel = new ListNode();
     let sentinelPointer = sentinel
@@ -61,8 +59,6 @@ function numberToLinkedList(numStr) {
         sentinelPointer.next = newNode;
         sentinelPointer = sentinelPointer.next;
     }
-
-    console.log(sentinel);
 
     return sentinel.next;
 
