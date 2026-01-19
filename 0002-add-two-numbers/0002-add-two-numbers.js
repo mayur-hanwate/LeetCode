@@ -62,21 +62,6 @@ var addTwoNumbers = function (l1, l2) {
     return sentinel.next;
 };
 
-function numberToLinkedList(numStr) {
-
-    const arr = numStr;
-    let sentinel = new ListNode();
-    let sentinelPointer = sentinel
-
-    for (let i = 0; i < arr.length; i++) {
-        let newNode = new ListNode(arr[i] * 1);
-        sentinelPointer.next = newNode;
-        sentinelPointer = sentinelPointer.next;
-    }
-
-    return sentinel.next;
-
-}
 
 // Reverse a linked list
 // save those values
