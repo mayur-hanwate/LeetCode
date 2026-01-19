@@ -14,12 +14,17 @@ var addTwoNumbers = function (l1, l2) {
 
     let carry = 0;
 
-    let numStr = [];
+    let sentinel = new ListNode();
+
+    let sentinelPointer = sentinel;
 
     while (l1 && l2) {
         let num = l1.val + l2.val + carry;
 
-        numStr.push(num % 10);
+        let newNode = new ListNode(num % 10);
+        sentinelPointer.next = newNode;
+
+        sentinelPointer = sentinelPointer.next;
 
         carry = Math.floor(num / 10);
 
@@ -29,23 +34,32 @@ var addTwoNumbers = function (l1, l2) {
 
     while (l1) {
         let num = l1.val + carry;
-        numStr.push(num % 10);
+        let newNode = new ListNode(num % 10);
+        sentinelPointer.next = newNode;
+
+        sentinelPointer = sentinelPointer.next;
         carry = Math.floor(num / 10);
         l1 = l1.next;
     }
 
     while (l2) {
         let num = l2.val + carry;
-         numStr.push(num % 10);
+         let newNode = new ListNode(num % 10);
+        sentinelPointer.next = newNode;
+
+        sentinelPointer = sentinelPointer.next;
         carry = Math.floor(num / 10);
         l2 = l2.next;
     }
 
     if (carry) {
-       numStr.push(carry);
+       let newNode = new ListNode(carry);
+        sentinelPointer.next = newNode;
+
+        sentinelPointer = sentinelPointer.next;
     }
 
-    return numberToLinkedList(numStr);
+    return sentinel.next;
 };
 
 function numberToLinkedList(numStr) {
