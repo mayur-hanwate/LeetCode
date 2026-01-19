@@ -14,12 +14,12 @@ var addTwoNumbers = function (l1, l2) {
 
     let carry = 0;
 
-    let numStr = '';
+    let numStr = [];
 
     while (l1 && l2) {
         let num = l1.val + l2.val + carry;
 
-        numStr = numStr.concat(num % 10);
+        numStr.push(num % 10);
 
         carry = Math.floor(num / 10);
 
@@ -29,20 +29,20 @@ var addTwoNumbers = function (l1, l2) {
 
     while (l1) {
         let num = l1.val + carry;
-        numStr = numStr.concat(num % 10);
+        numStr.push(num % 10);
         carry = Math.floor(num / 10);
         l1 = l1.next;
     }
 
     while (l2) {
         let num = l2.val + carry;
-        numStr = numStr.concat(num % 10);
+         numStr.push(num % 10);
         carry = Math.floor(num / 10);
         l2 = l2.next;
     }
 
     if (carry) {
-       numStr =  numStr.concat(carry);
+       numStr.push(carry);
     }
 
     return numberToLinkedList(numStr);
@@ -50,7 +50,7 @@ var addTwoNumbers = function (l1, l2) {
 
 function numberToLinkedList(numStr) {
 
-    const arr = numStr.split('');
+    const arr = numStr;
     let sentinel = new ListNode();
     let sentinelPointer = sentinel
 
