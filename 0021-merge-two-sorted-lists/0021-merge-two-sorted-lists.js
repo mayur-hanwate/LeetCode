@@ -11,41 +11,34 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function (list1, list2) {
-    let newList = new ListNode();
 
-    let pointer = newList;
+    let p1 = list1;
+    let p2 = list2;
 
-    while (list1 && list2) {
-        if (list1.val <= list2.val) {
-            pointer.next = list1;
-            pointer = pointer.next;
+    let sentinel =  new ListNode();
+    let p3 = sentinel;
 
-            list1 = list1.next;
+    while (p1 && p2) {
+        if (p1.val <= p2.val) {
+            p3.next = p1;
+            p1 = p1.next;
+            p3 = p3.next;
         }
         else {
-            pointer.next = list2;
-
-            pointer = pointer.next;
-
-            list2 = list2.next;
+            p3.next = p2;
+            p2 = p2.next;
+            p3 = p3.next;
         }
     }
 
-    while (list1) {
-        pointer.next = list1;
-        pointer = pointer.next;
-
-        list1 = list1.next;
+    if (p1) {
+        p3.next = p1;
     }
 
-    while (list2) {
-        pointer.next = list2;
-
-        pointer = pointer.next;
-
-        list2 = list2.next;
+    if (p2) {
+        p3.next = p2;
     }
 
-    return newList.next;
+
+    return sentinel.next;
 };
-
