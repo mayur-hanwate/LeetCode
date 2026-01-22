@@ -9,30 +9,26 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var oddEvenList = function (head) {
+var oddEvenList = function(head) {
 
-    let pointer = head;
+    if(!head && !head?.next) return head;
 
-    let sentinelEven = new ListNode();
-    let sentinelOdd = new ListNode();
+    let list1 = head;
+    let list2 = head.next;
 
-    let sentinelEvenPointer = sentinelEven;
-    let sentinelOddPointer = sentinelOdd;
+    let list = list2;
 
-    while (pointer) {
-        sentinelEvenPointer.next = pointer;
-        sentinelOddPointer.next = pointer.next;
+    while(list1.next && list2.next){
+        list1.next = list1.next.next;
+        list2.next = list2.next.next;
 
-        pointer = pointer.next ? pointer.next.next : null;
-
-        sentinelEvenPointer = sentinelEvenPointer.next;
-        sentinelOddPointer = sentinelOddPointer.next;
+        list1 = list1.next;
+        list2 = list2.next;
     }
 
-    sentinelEvenPointer.next = sentinelOdd.next;
+    console.log(list1, list2, list, head);
 
-    return sentinelEven.next;
-    
+    list1.next = list;
+
+    return head;
 };
-
-
