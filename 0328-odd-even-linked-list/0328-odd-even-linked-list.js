@@ -26,8 +26,6 @@ var oddEvenList = function(head) {
         list2 = list2.next;
     }
 
-    console.log(list1, list2, list, head);
-
     list1.next = list;
 
     return head;
