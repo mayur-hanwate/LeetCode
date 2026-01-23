@@ -10,6 +10,7 @@
  * @param {number} k
  * @return {ListNode}
  */
+ 
 var rotateRight = function(head, k) {
     let rotatedList = head;
 
