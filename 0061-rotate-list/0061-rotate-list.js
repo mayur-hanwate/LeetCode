@@ -35,13 +35,12 @@ var rotateRight = function (head, k) {
         endPointer = endPointer.next;
     }
 
-    console.log(startPointer, endPointer, head);
 
     let tempNode = startPointer.next;
     startPointer.next = null;
+
     endPointer.next = head;
 
-    console.log(startPointer, endPointer, tempNode, head);
 
     return tempNode;
 
