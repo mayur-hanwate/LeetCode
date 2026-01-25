@@ -12,59 +12,26 @@
  */
 var addTwoNumbers = function (l1, l2) {
 
+    let sentinel = new ListNode();
+    let senPointer = sentinel;
+
     let carry = 0;
 
-    let sentinel = new ListNode();
+    while (l1 || l2 || carry) {
+        let sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+        carry = Math.floor(sum / 10);
+        let rem = sum % 10;
 
-    let sentinelPointer = sentinel;
+        let newNode = new ListNode(rem);
 
-    while (l1 && l2) {
-        let num = l1.val + l2.val + carry;
+        senPointer.next = newNode;
+        senPointer = senPointer.next;
 
-        let newNode = new ListNode(num % 10);
-        sentinelPointer.next = newNode;
+        l1 = l1 && l1.next;
+        l2 = l2 && l2.next;
 
-        sentinelPointer = sentinelPointer.next;
-
-        carry = Math.floor(num / 10);
-
-        l1 = l1.next;
-        l2 = l2.next;
-    }
-
-    while (l1) {
-        let num = l1.val + carry;
-        let newNode = new ListNode(num % 10);
-        sentinelPointer.next = newNode;
-
-        sentinelPointer = sentinelPointer.next;
-        carry = Math.floor(num / 10);
-        l1 = l1.next;
-    }
-
-    while (l2) {
-        let num = l2.val + carry;
-         let newNode = new ListNode(num % 10);
-        sentinelPointer.next = newNode;
-
-        sentinelPointer = sentinelPointer.next;
-        carry = Math.floor(num / 10);
-        l2 = l2.next;
-    }
-
-    if (carry) {
-       let newNode = new ListNode(carry);
-        sentinelPointer.next = newNode;
-
-        sentinelPointer = sentinelPointer.next;
     }
 
     return sentinel.next;
+
 };
-
-
-// Reverse a linked list
-// save those values
-// Add them together
-// Create new linked list
-// And reverse it again
