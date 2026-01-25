@@ -10,46 +10,51 @@
  * @param {number} k
  * @return {ListNode}
  */
- 
-var rotateRight = function(head, k) {
-    let rotatedList = head;
+var rotateRight = function (head, k) {
 
-    let len = k % findLenght(head) ;
+    // Find lenght
+    let len = listLength(head);
 
-    while(len){
-       rotatedList = rotateList(rotatedList);
-       len--;
+    // How many times need to rotate
+    let actualLen = k % len;
+
+    if (!actualLen) return head;
+
+    // Reach the position from where you want to rotate
+
+    let startPointer = head;
+    let endPointer = head;
+
+    while (actualLen) {
+        endPointer = endPointer.next;
+        actualLen--;
     }
-    return rotatedList;
+
+    while (endPointer.next) {
+        startPointer = startPointer.next;
+        endPointer = endPointer.next;
+    }
+
+    console.log(startPointer, endPointer, head);
+
+    let tempNode = startPointer.next;
+    startPointer.next = null;
+    endPointer.next = head;
+
+    console.log(startPointer, endPointer, tempNode, head);
+
+    return tempNode;
+
 };
 
-function findLenght(head){
-    let len = 0;
-    let pointer = head;
-    while(pointer){
+function listLength(head) {
 
+    let pointer = head;
+    let len = 0
+    while (pointer) {
         pointer = pointer.next;
         len++;
     }
+
     return len;
-}
-
-function rotateList(head){
-
-    if(!head || !head?.next) return head;
-
-    let startPointer = head;
-
-    let pointer = head;
-    let prevPointer = null;
-
-    while(pointer.next){
-        prevPointer = pointer;
-        pointer = pointer.next;
-    }
-
-    prevPointer.next = pointer.next;
-    pointer.next = startPointer;
-
-    return pointer;
 }
