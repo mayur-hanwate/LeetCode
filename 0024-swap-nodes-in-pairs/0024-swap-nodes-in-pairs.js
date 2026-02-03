@@ -9,30 +9,13 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var swapPairs = function(head) {
+var swapPairs = function (head) {
 
-    if(!head || !head.next) return head;
+    if (!head || !head.next) return head;
 
-    let sen = new ListNode();
-    let senP = sen;
+    let next = head.next;
+    head.next = swapPairs(next.next);
+    next.next = head;
 
-    let c = head;
-    let n = head.next;
-
-    while(c && n){
-        // Pointer sen to next -> next to curr -> curr to nnext.next
-        senP.next = n;
-        c.next = n.next;
-        n.next = c;
-
-        // Reset the pointer
-        senP = c;
-        c = c.next;
-        n = c && c.next;
-
-
-    }
-    
-
-    return sen.next;
+    return next;
 };
