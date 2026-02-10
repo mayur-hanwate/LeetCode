@@ -7,17 +7,13 @@ var lengthOfLastWord = function(s) {
     let strLength = 0;
     let isValidSpace = true;
     
-    for(let i =0;i<s.length;i++){
-        if(isValidSpace && s[i] !== ' '){
-            strLength = 0;
+    for(let i  = s.length - 1;i>=0;i--){
+        if(s[i] !== ' '){
+            strLength++;
             isValidSpace = false;
         }
 
-        if(s[i] !== ' '){
-            strLength++;
-        }else{
-            isValidSpace = true;
-        }
+        if(!isValidSpace && s[i] === ' ') return strLength;
     }
 
     return strLength;
