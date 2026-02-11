@@ -4,25 +4,15 @@
  */
 var lengthOfLastWord = function(s) {
 
-    let strLength = 0;
-    let isValidSpace = true;
+    let count = 0;
     
-    for(let i  = s.length - 1;i>=0;i--){
+    for(let i =s.length-1;i>=0;i--){
         if(s[i] !== ' '){
-            strLength++;
-            isValidSpace = false;
+            count++;
         }
-
-        if(!isValidSpace && s[i] === ' ') return strLength;
+        else if(count > 0){
+            break;
+        }
     }
-
-    return strLength;
-   
+    return count;
 };
-
-// Traditional way
-
-// Loop through the array.
-// Look for 2 conditions toreset a string and add a string
-// 1. If i reach the end, the last string would be my length
-// 2. If i reach space and a letter after that then reset my num count
