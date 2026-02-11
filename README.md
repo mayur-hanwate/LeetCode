@@ -59,6 +59,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0496-next-greater-element-i](https://github.com/mayur-hanwate/LeetCode/tree/master/0496-next-greater-element-i) |
 | [0704-binary-search](https://github.com/mayur-hanwate/LeetCode/tree/master/0704-binary-search) |
+| [2942-find-words-containing-character](https://github.com/mayur-hanwate/LeetCode/tree/master/2942-find-words-containing-character) |
 ## Binary Search
 |  |
 | ------- |
@@ -68,6 +69,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0058-length-of-last-word](https://github.com/mayur-hanwate/LeetCode/tree/master/0058-length-of-last-word) |
 | [0344-reverse-string](https://github.com/mayur-hanwate/LeetCode/tree/master/0344-reverse-string) |
+| [2942-find-words-containing-character](https://github.com/mayur-hanwate/LeetCode/tree/master/2942-find-words-containing-character) |
 ## Monotonic Stack
 |  |
 | ------- |
